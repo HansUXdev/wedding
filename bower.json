@@ -1,0 +1,25 @@
+{
+  "name": "wedding-theme",
+  "description": "An Express.js fork of the classic Zurb Template.",
+  "main": "sever.js",
+  "authors": [
+    "Hans McMurdy"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "foundation",
+    "foundation-sites",
+    "boilerplate"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-videobackground": "^1.4.1"
+  }
+}

@@ -1,0 +1,44 @@
+# Your project's server will run on localhost:xxxx at this port
+PORT: 3000
+
+# Autoprefixer will make sure your CSS works with these browsers
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+  - "ios >= 7"
+
+# UnCSS will use these settings
+UNCSS_OPTIONS:
+  html:
+    - "src/**/*.html"
+  ignore:
+    - !!js/regexp .foundation-mq
+    - !!js/regexp ^\.is-.*
+
+# Gulp will reference these paths when it copies files
+PATHS:
+  # Path to dist folder
+  dist: "public"  
+  # Paths to static assets that aren't images, CSS, or JavaScript
+  assets:
+    - "src/assets/**/*"
+    - "!src/assets/{img,js,scss}/**/*"
+  # Paths to Sass libraries, which can then be loaded with @import
+  sass:
+    - "node_modules/foundation-sites/scss"
+    - "node_modules/motion-ui/src"
+  # Paths to JavaScript entry points for webpack to bundle modules
+  entries:
+    # - "src/assets/js/bootstrap/bootstrap.min.js"
+    # - "src/assets/js/bootstrap/jquery.singlePageNav.min.js"
+    # - "src/assets/js/bootstrap/jquery.easing.min.js"
+    # - "src/assets/js/bootstrap/jquery.mixitup.min.js"
+    # - "src/assets/js/bootstrap/owl.carousel.js"
+    # - "src/assets/js/bootstrap/jquery.prettyPhoto.js"
+    # - "src/assets/js/bootstrap/smoothslides.min.js"
+    # - "src/assets/js/bootstrap/countdown.js"
+    # - "src/assets/js/bootstrap/jquery.videobackground.js"
+    # - "src/assets/js/bootstrap/jquery.imageScroll.js"
+    # - "src/assets/js/bootstrap/site.js"
+    - "src/assets/js/app.js"
+    - "src/assets/js/theme.js"

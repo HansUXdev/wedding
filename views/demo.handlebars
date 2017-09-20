@@ -1,0 +1,229 @@
+
+<!-- Navigation -->
+   {{>primary-nav}}
+
+    {{!--   <div id="preloader">
+         <div id="status">
+            <div id="bowlG">
+               <div id="bowl_ringG">
+                  <div class="ball_holderG">
+                     <div class="ballG">
+                        <div id="heart"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- #bowlG -->
+            <img id="logo_n" src="/public/assets/img/logo.png" width=160 alt="Couple Logo" />
+         </div>
+         <!-- #status -->
+      </div> --}}
+      <!-- #preloader -->
+<!-- Header -->
+   {{>header-countdown}}
+
+<!--Bride Groom Section-->
+      {{>bride_groom}}
+      <!--Parallex Section One-->
+      <div class="img-holder" data-image="/public/assets/img/parallex1.png" data-width="1400" data-height="1122"></div>
+      <!--Parallex Section One End-->
+
+<!-- timeline section -->
+<!-- lovestory Section -->
+      {{>love-story}}
+
+      <!--Parallex section 2-->
+      <div class="img-holder" data-image="/public/assets/img/parallex2.png" data-width="2616" data-height="1553"></div>
+      <!--Parallex section 2 End-->
+      <!--Our Family section-->
+{{>family}}
+      <!--Our Family section End-->
+      <!--Our Photo Gallery section-->
+{{>gallery}}
+      <!--Our Photo Gallery section End-->
+      <!--Events ans Parties section-->
+{{>events}}
+      <!--Events ans Parties section End-->
+      <!--Parallex section 3-->
+      <div class="img-holder" data-image="/public/assets/img/parallex3.jpg" data-width="3888" data-height="2592"></div>
+      <!--parallex section 3 End-->
+      <!-- Bridesmaid and Groomsmen sec-->
+{{>Bridesmaid_Groomsmen}}
+      <!-- Bridesmaid and Groomsmen sec End-->
+
+      <!--RSVP Section-->
+      <section id="rsvp" class="rsvp_sec">
+         <h2 class="hidden"> Text hidden heading for validation</h2>
+         <div class="map-holder">
+            <div id="map" class="map"></div>
+         </div>
+      </section>
+      <!--RSVP Section end-->
+      <div class="container rsvp_form">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="form_wrapper two new">
+                  <div class="section-head">
+                     <h2 class="section-heading">RSVP</h2>
+                     <div class="bottom-dash"></div>
+                     <p class="section-subheading text-muted">Duis aute irure dolor in reprehenderit in voluptate. </p>
+                  </div>
+                  <form method='post' action='/' id='forms'>
+                     <div class="form-group">
+                        <input name='name' type="text" class="form-control" id="name" required placeholder="Name">
+                     </div>
+                     <div class="form-group">
+                        <input name='email' type="email" class="form-control" id="email" required placeholder="Email">
+                     </div>
+                     <div class="form-group select_group select_guest">
+                        <select name='numguest' class="form-control select_frm" id="numguest">
+                           <option>No Of Guest</option>
+                           <option value='1'>01</option>
+                           <option value='2'>02</option>
+                           <option value='3'>03</option>
+                           <option value='4'>04</option>
+                           <option value='5'>05</option>
+                        </select>
+                     </div>
+                     <div class="form-group select_group select_attend">
+                        <select name='allevents' class="form-control selectpicker select_frm" id="allevents">
+                           <option>All Events</option>
+                           <option value='Wedding-Ceremony'>Wedding Ceremony</option>
+                           <option value='Wedding-Party'>Wedding Party</option>
+                           <option value='Dinner'>Dinner</option>
+                        </select>
+                     </div>
+                     <div class="form-group select_group">
+                        <select name="attending" class="form-control selectpicker select_frm" id="attending">
+                           <option value='Yes'>Yes, Absolutely</option>
+                           <option value='No'>Sorry, Great Miss</option>
+                        </select>
+                     </div>
+                     <button type="submit" class="btn btn-default btn_attend" value='Send'>submit</button>
+                  </form>
+               </div>
+               <!-- .form_wrapper .two .new -->   
+            </div>
+            <!-- .col-lg-12  -->
+         </div>
+         <!-- .row   -->
+      </div>
+      <!-- .container .rsvp_form -->
+      <!--Phone mail addres section-->
+      <section class="footer_top_sec footer_top_sec_2">
+         <!--Hidden header for w3c validation only-->
+         <h2 class="hidden">Hidden header for w3c validation only</h2>
+         <!--Hidden header for w3c validation only-->
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <p class="phone"><img src="/public/assets/img/phone-icon.png" alt="" />239-842-3433</p>
+               </div>
+               <div class="col-md-4">
+                  <p class="mail"><img src="/public/assets/img/mail-icon.png" alt="" />name@domain.com</p>
+               </div>
+               <div class="col-md-4">
+                  <p class="address"><img src="/public/assets/img/location-icon.png" alt="" />Home Address,City Name Country</p>
+               </div>
+            </div>
+            <!-- .row -->
+         </div>
+         <!-- .container .rsvp_form --> 
+      </section>
+
+      <!--Go Top -->
+
+      {{!-- <div id="toTop" class="scrollup two"><a href="#"><i class="fa fa-anglpe-double-up fa-lg"></i></a></div> --}}
+
+      <!--Phone mail address section End-->
+      <footer id="footer" class="footer_sec">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6 col-xs-12">
+                  <span id="copyright" class="copyright">
+                     <!-- &copy; 2015 Themeonlab.com . All rights reserved. -->
+                  </span>
+               </div>
+               <div class="col-md-6 col-xs-12">
+                  <ul class="list-inline social_icons wow flash">
+                     <li><a href="#"><i class="fa fa-twitter"></i></a>
+                     </li>
+                     <li><a href="#"><i class="fa fa-facebook"></i></a>
+                     </li>
+                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                     <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  </ul>
+               </div>
+               <!-- .col-md-6 col-xs-12 -->
+            </div>
+            <!-- .row -->
+         </div>
+         <!-- .container .rsvp_form -->
+      </footer>
+      <!-- Modal -->
+      <div class="modal fade wed" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               </div>
+               <div class="modal-body">
+                  <div class="modal-img">
+                     <img src="/public/assets/img/gallery/photo03.png" alt="" />  
+                  </div>
+                  <div class="modal-txt">
+                     <h4 class="modal-title">Brittany McMurdy</h4>
+                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est. Sed ut perspiciatis.</p>
+                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-default cls-wed" data-dismiss="modal">Close</button> -->
+                  <p class="social_icons">
+                     <a href="#" class=""><i class="fa fa-twitter"></i></a>
+                     <a href="#" class=""><i class="fa fa-linkedin"></i></a>
+                     <a href="#" class=""><i class="fa fa-facebook"></i></a>
+                  </p>
+               </div>
+               <!-- .modal-footer -->
+            </div>
+            <!-- .modal-content -->
+         </div>
+         <!-- .modal-dialog -->
+      </div>
+      <!-- .modal .wed -->
+      <div class="modal fade wed" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               </div>
+               <div class="modal-body">
+                  <div class="modal-img">
+                     <img src="/public/assets/img/gallery/photo05.png" alt="" /> 
+                  </div>
+                  <div class="modal-txt">
+                     <h4 class="modal-title">Brett "Hans" McMurdy</h4>
+                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est. Sed ut perspiciatis.</p>
+                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-default cls-wed" data-dismiss="modal">Close</button> -->
+                  <p class="social_icons">
+                     <a href="#" class=""><i class="fa fa-twitter"></i></a>
+                     <a href="#" class=""><i class="fa fa-linkedin"></i></a>
+                     <a href="#" class=""><i class="fa fa-facebook"></i></a>
+                  </p>
+               </div>
+               <!-- .modal-footer -->
+            </div>
+            <!-- .modal-content -->
+         </div>
+         <!-- .modal-dialog -->
+      </div>
+      <!-- .modal .wed -->
+      <!-- Modal End-->
+      <!-- jQuery -->
+

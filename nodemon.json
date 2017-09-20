@@ -1,0 +1,14 @@
+{
+  "ignore": [
+    "public/*",
+    "node_modules/**/node_modules"
+  ],
+  "watch": [
+  	"./*",
+  	"controllers/*",
+	  "views/*",
+	  "views/layouts/*.handlebars",
+    "test/fixtures/",
+    "test/samples/"
+  ]
+}
