@@ -13,6 +13,37 @@
       </div>
       <!--.row-->
       <div class="row two">
+         {{#each events}}
+         <div class="col-md-4">
+            <div class="evnt_card_container">
+               <div class="containers">
+                  <div class="cards">
+                     <div class="card front evnt_prt evnt_prt_1">
+                        <h2>{{title}}</h2>
+                        <img src="/public/assets/img/event_icon1.png" alt="" />
+                        <p>Thousand Oaks, CA</p>
+                        {{!-- <p>{{date}}</p> --}}
+                        <button class="btn btn-primary btn_evnt">{{time}}</button>
+                     </div>
+                     <!--.card .front .evnt_prt .evnt_prt_1-->
+                     <div class="card back evnt_prt_back evnt_prt_back_1">
+                        <h2>{{title}}</h2>
+                        <div class="evnt_addres">
+                           <p>{{locations}}</p>
+                           <p>{{address}}</p>
+                           <p>{{date}}</p>
+                           <p>{{time}}</p>
+                        </div>
+                     </div>
+                     <!--.card .back .evnt_prt_back .evnt_prt_back_1-->
+                  </div>
+                  <!-- .cards-->
+               </div>
+               <!--.containers-->
+            </div>
+            <!-- .evnt_card_container-->
+         </div>
+         {{else}}
          <div class="col-md-4">
             <div class="evnt_card_container">
                <div class="containers">
@@ -20,7 +51,7 @@
                      <div class="card front evnt_prt evnt_prt_1">
                         <h2>Wedding Ceremony</h2>
                         <img src="/public/assets/img/event_icon1.png" alt="" />
-                        <p>LONDON.UK</p>
+                        <p>Thousand Oaks, CA</p>
                         <button class="btn btn-primary btn_evnt">4:30PM</button>
                      </div>
                      <!--.card .front .evnt_prt .evnt_prt_1-->
@@ -49,7 +80,7 @@
                      <div class="card front evnt_prt evnt_prt_2">
                         <h2>Wedding Party</h2>
                         <img src="/public/assets/img/event_icon2.png" alt="" />
-                        <p>LONDON.UK</p>
+                        <p>Thousand Oaks, CA</p>
                         <button class="btn btn-primary btn_evnt">6:30PM</button>
                      </div>
                      <!--.card .front .evnt_prt .evnt_prt_2-->
@@ -78,7 +109,7 @@
                      <div class="card front evnt_prt evnt_prt_3">
                         <h2>Dinner</h2>
                         <img src="/public/assets/img/event_icon3.png" alt="" />
-                        <p>LONDON.UK</p>
+                        <p>Thousand Oaks, CA</p>
                         <button class="btn btn-primary btn_evnt">7:45PM</button>
                      </div>
                      <!--.card .front .evnt_prt .evnt_prt_3-->
@@ -100,6 +131,7 @@
             <!-- .evnt_card_container-->
          </div>
          <!-- .col-md-4-->
+         {{/each}}
       </div>
       <!--Parallex section 3-->
    </div>

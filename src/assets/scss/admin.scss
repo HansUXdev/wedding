@@ -8,7 +8,7 @@
 @include foundation-grid;
 // @include foundation-flex-grid;
 //
-// @include foundation-xy-grid-classes;
+@include foundation-xy-grid-classes;
 @include foundation-typography;
 @include foundation-button;
 @include foundation-forms;
@@ -52,17 +52,27 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 @import 'components/building-blocks/topbar-responsive';
+@import 'components/building-blocks/app-dashboard-layout';
 @import 'components/building-blocks/multilevel-offcanvas-menu';
+@import 'components/building-blocks/card-info';
+@import 'components/building-blocks/card-user-profile';
+@import 'components/building-blocks/user-card';
+@import 'components/building-blocks/form-floating-label';
+@import 'components/building-blocks/responsive-timeline';
+@import 'components/building-blocks/form-floating-label';
+
+
+
 @import 'components/building-blocks/status-update-input-box';
 @import 'components/building-blocks/contact-panel';
 @import 'components/building-blocks/todo-list-card';
-@import 'components/building-blocks/app-dashboard-layout';
 @import 'components/building-blocks/dashboard-table';
 @import 'components/building-blocks/marketing-site-three-up';
 @import 'components/building-blocks/login-box';
 @import 'components/building-blocks/sign-in-form';
 @import 'components/building-blocks/marketing-site-hero';
 @import 'components/building-blocks/ecommerce-header';
+
 // @import 'components/building-blocks/marketing-site-footer';
 
 

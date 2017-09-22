@@ -19,56 +19,24 @@
          <div class="row">
             <div class="col-lg-12">
                <ul class="timeline">
-                  <li class="timeline-inverted right">
+               {{#each timeline}}
+                  <li class="{{#if left}}left{{else}}timeline-inverted right{{/if}}">
                      <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="/public/assets/img/timeline/meet.png" alt="Couple first meet">
-                     </div>
-                     <div class="timeline-panel right-panel">
-                        <div class="timeline-heading">
-                           <p class="posting_date">December 19,2012</p>
-                           <h3>Day we meet each other</h3>
-                        </div>
-                        <div class="timeline-body">
-                           <div class="timeline_img">
-                              <img src="/public/assets/img/two/image1.png" alt="Couple first meet" />
-                              <div class="overlay_tml">
-                                 <div class="overlay_text">
-                                    <div class="inner-extra">
-                                       <a href="/public/assets/img/two/image1.png" data-gal="prettyPhoto"><img src="/public/assets/img/zoom.png" alt="" /></a>
-                                       <p>Day we meet each other</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- .overlay_tml -->
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="left">
-                     <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="/public/assets/img/timeline/kiss.png" alt="Couple first kiss">
+                        <img class="img-circle img-responsive" src="{{logo}}" alt="Couple first kiss">
                      </div>
                      <div class="timeline-panel left-panel">
                         <div class="timeline-heading">
-                           <p class="posting_date">february 19,2013</p>
-                           <h3>Our first kiss</h3>
+                           <p class="posting_date">{{date}}</p>
+                           <h3>{{title}}</h3>
                         </div>
                         <div class="timeline-body">
                            <div class="timeline_img">
-                              <img src="/public/assets/img/two/image2.png" alt="" />
-                              <div class="overlay_tml">
-                                 <div class="overlay_text">
-                                    <div class="inner-extra">
-                                       <a href="/public/assets/img/two/image2.png" data-gal="prettyPhoto"><img src="/public/assets/img/zoom.png" alt="Couple first kiss" /></a>
-                                       <p>Our first kiss</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- .overlay_tml -->
+                              <img src="{{image}}" alt="" />
                            </div>
                         </div>
                      </div>
                   </li>
+                  {{else}}
                   <li class="timeline-inverted right">
                      <div class="timeline-image">
                         <img class="img-circle img-responsive" src="/public/assets/img/timeline/trip.png" alt="Couple first holiday trip">
@@ -144,15 +112,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="timeline-inverted">
-                     <div class="timeline-image more">
-                        <a href="#">
-                           <div class="inner-more">
-                              <p>More</p>
-                           </div>
-                        </a>
-                     </div>
-                  </li>
+               {{/each}}
                </ul>
                <!-- .timeline -->
             </div>

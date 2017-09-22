@@ -1,0 +1,73 @@
+<div class="timeline" style="background:grey;">
+{{#each timeline}}
+  <div class="timeline-item">
+    <div class="timeline-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M9 21h-9v-2h9v2zm6.695-2.88l-3.314-3.13-1.381 1.47 4.699 4.54 8.301-8.441-1.384-1.439-6.921 7zm-6.695-1.144h-9v-2h9v2zm8-3.976h-17v-2h17v2zm7-4h-24v-2h24v2zm0-4h-24v-2h24v2z"/></svg>
+    </div>
+    <div class="timeline-content ">
+      <h2 class="timeline-content-date">{{title}}</h2>
+    </div>
+    {{!-- {{#unless left}}right{{/unless}} --}}
+    <div class="timeline-content ">
+      <p class="timeline-content-date">{{date}}</p>
+      <p>{{description}}</p>
+    </div>
+  </div>
+{{/each}}
+  <div class="timeline-item">
+    <div class="timeline-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M9 21h-9v-2h9v2zm6.695-2.88l-3.314-3.13-1.381 1.47 4.699 4.54 8.301-8.441-1.384-1.439-6.921 7zm-6.695-1.144h-9v-2h9v2zm8-3.976h-17v-2h17v2zm7-4h-24v-2h24v2zm0-4h-24v-2h24v2z"/></svg>
+    </div>
+    <div class="timeline-content">
+      <p class="timeline-content-date">2008</h2>
+      <p>The ZURB Style Guide is created to help us speed up our work. It’s a handy collection of HTML, CSS and Javascript that we use on every client project. The ideas of ZURB Style Guide evolve over the years and form the basis for a new framework, Foundation.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <a class="timeline-icon text-center" data-toggle="example-dropdown">
+      <i class="large fa fa-plus" style="color:black;padding:1em 0;" height="21" width="21"></i>
+      {{!-- <img src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/96/iconmonstr-check-mark-18.png" class=""  alt=""> --}}
+    </a>
+    <div class="timeline-content right">
+      <p class="timeline-content-date">Create New Event</h2>
+        <div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
+          {{!-- Example form in a dropdown.  --}}
+          <form method='post' action='/admin/timeline'>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label>Title
+                  <input type="text" name="title" placeholder="Title">
+                </label>
+              </div>
+              <div class="medium-12 columns">
+                <label>Date
+                  <input type="text" name="date" placeholder="Date">
+                </label>
+              </div>
+              <div class="medium-12 columns">
+                <label>Image
+                  <input type="text" name="image" placeholder="Image">
+                </label>
+              </div>
+              <div class="medium-12 columns">
+                <label>Logo
+                  <input type="text" name="logo" placeholder="Logo">
+                </label>
+              </div>
+              <div class="medium-12 columns">
+                <label>Position
+                  <input type="text" name="left" placeholder="Position">
+                </label>
+              </div>
+              <div class="medium-12 columns">
+                <textarea name="description" id="" rows="5" placeholder="Description"></textarea>
+              </div>
+            </div>
+            <button class="button expanded" type="submit" value='Send'>Submit</button>
+          </form>
+        </div>
+    </div>
+  </div>
+
+</div>

@@ -1,14 +1,45 @@
 
 module.exports = function(app, menu) {
-  var Rsvp = require('../models/mongoose/rsvp');
+  var mongoose = require('mongoose');
+  let Rsvp = require('../models/mongoose/rsvp');
+  // let Timeline = require('../models/mongoose/timeline');
+  // let Events = require('../models/mongoose/events');
 
-  app.get("/",function(req, res) {
-    res.render("demo",
-      {layout: 'bootstrap'}
-    );
-    // console.log(RSVP);
+
+  app.get('/', function(req, res) {
+      var Timeline = mongoose.model('Timeline');
+      var Events = mongoose.model('Events');
+
+      Timeline.find(function (err, timeline) {
+          Events.find(function (err, events) {
+              res.render('demo', {
+                  layout: 'bootstrap',
+                  timeline : timeline,
+                  events : events
+              });
+          });
+      });
   });
 
+  // app.get("/",function(req, res) {
+  //     let query = Timeline.find({}).limit(5);
+  //     query.exec(function (err, timeline, events) {
+  //         if (err) {throw Error; }
+  //         res.render('demo', {
+  //           layout: 'bootstrap',
+  //           timeline: timeline,
+  //           events: events,
+  //           // assets: '../../public/assets/'
+  //         });
+  //     });
+  //     // res.render('demo', {
+  //     //   layout: 'bootstrap',
+  //     //   timeline: timeline,
+  //     //   events: events,
+  //     // });
+  // });
+
+/// Post the RSVP 
   app.post("/",function(req, res) {
         var RSVP = new Rsvp();
         RSVP.fullname = req.body.name;
@@ -21,25 +52,6 @@ module.exports = function(app, menu) {
           if (err) {console.log(err); return;} 
           else{res.redirect('/');};
         });
-  });
-
-
-
-  ///// create routes for layout pages
-  menu.layouts.forEach(function(layouts) {
-   app.get(layouts.url,function(req, res) {
-     res.render(
-       layouts.page,
-       {layout: layouts.layout}
-     );
-   });
-  });
-
-  ///// create routes for each tempalate
-  menu.templates.forEach(function(templates) {
-   app.get(templates.url,function(req, res) {
-     res.render("pages/"+templates.url);
-   });
   });
 
 

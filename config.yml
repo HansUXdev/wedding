@@ -40,5 +40,7 @@ PATHS:
     # - "src/assets/js/bootstrap/jquery.videobackground.js"
     # - "src/assets/js/bootstrap/jquery.imageScroll.js"
     # - "src/assets/js/bootstrap/site.js"
+    - "src/assets/js/building-blocks/app-dashboard-layout.js"
+    - "src/assets/js/building-blocks/form-floating-label.js"
     - "src/assets/js/app.js"
     - "src/assets/js/theme.js"

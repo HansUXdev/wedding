@@ -17,12 +17,21 @@
    
   </head>
   <body>
+
+<style>
+  .fa{ color: #fff;}
+  .app-dashboard-sidebar-item span{ color: #fff;}
+  .bride_groom{
+    width: 12px;
+    padding-right: 20px;
+  }
+</style>
     {{!-- {{>topbar-data}} --}}
 <div class="app-dashboard shrink-medium">
   <div class="row expanded app-dashboard-top-nav-bar">
     <div class="columns medium-2">
       <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-      <a class="app-dashboard-logo">Foundation</a>
+      <a class="app-dashboard-logo">Wedding</a>
     </div>
     <div class="columns show-for-medium">
       <div class="app-dashboard-search-bar-container">
@@ -42,7 +51,7 @@
     <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
       <div class="app-dashboard-sidebar-title-area">
         <div class="app-dashboard-close-sidebar">
-          <h3 class="app-dashboard-sidebar-block-title">Items</h3>
+          <h3 class="app-dashboard-sidebar-block-title">Edit Wedding Details</h3>
           <!-- Close button -->
           <button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
             <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
@@ -55,11 +64,54 @@
         </div>
       </div>
       <div class="app-dashboard-sidebar-inner">
+
         <ul class="menu vertical">
+        {{!-- RSVP's --}}
+          <li><a href="/admin" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-envelope-open"></i>
+             <span class="app-dashboard-sidebar-text">RSVP's</span>
+          </a></li>
+        {{!-- Bride and Groom --}}
+          <li><a href="/admin/couple" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-female"></i>
+             <i class="large fa fa-male"></i>
+             <span class="app-dashboard-sidebar-text">Bride and Groom</span>
+          </a></li>
+        {{!-- Story --}}
+          <li><a href="/admin/timeline" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-heart"></i>
+             <span class="app-dashboard-sidebar-text">Our Story</span>
+          </a></li>
+        {{!-- Family --}}
+          <li><a href="/admin/family" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-group"></i>
+             <span class="app-dashboard-sidebar-text">Family</span>
+          </a></li>
+        {{!-- Gallery --}}
+          <li><a href="/admin/gallery" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-photo"></i>
+             <span class="app-dashboard-sidebar-text">Gallery</span>
+          </a></li>
+        {{!-- Events --}}
+          <li><a href="/admin/events" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-group"></i>
+             <span class="app-dashboard-sidebar-text">Events</span>
+          </a></li>
+        {{!-- Bridesmaid --}}
+          <li><a href="/admin/bridesmaid" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-female"></i>
+             <span class="app-dashboard-sidebar-text">Bridesmaid</span>
+          </a></li>
+        {{!-- Groomsmen --}}
+          <li><a href="/admin/groomsmen" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-male"></i>
+             <span class="app-dashboard-sidebar-text">Groomsmen</span>
+          </a></li>
+
+
         {{!-- Blog --}}
           {{!-- In a CMS, the routes should be something like:
                 /admin/edit/:post
-           --}}
           <ul class="vertical menu accordion-menu" data-accordion-menu><li>
             <a href="#" class="is-active">
               <i class="large fa fa-files-o"></i>
@@ -70,64 +122,12 @@
               <li><a href="/blog">Views Posts</a></li>
             </ul>
           </li></ul>
-        {{!-- Analytics --}}
-          <li><a>
-             <i class="large fa fa-area-chart"></i>
-             <span class="app-dashboard-sidebar-text">Analytics</span>
-             </a>
-          </li>
-        {{!-- Messages --}}
-          <ul class="vertical menu accordion-menu" data-accordion-menu><li>
-            <a href="#" class="is-active">
-              <i class="large fa fa-envelope-open"></i>
-              <span class="app-dashboard-sidebar-text">Messages</span>
-              {{#if messages}}
-                <span class="badge" id="messageCount">
-                  1 {{!-- count --}}
-                  <span class="show-for-sr">unread message</span>
-                </span>
-              {{/if}}
-            </a>
-            <ul class="menu vertical nested">
-              <li><a href="/admin/messages">
-                Read Messages
-              </a></li>
-            </ul>
-          </li></ul>
-        {{!-- USERS --}}
-          <ul class="vertical menu accordion-menu" data-accordion-menu><li>
-            <a href="#" class="is-active">
-              <i class="large fa fa-users"></i>
-              <span class="app-dashboard-sidebar-text">Users</span>
-            </a>
-            <ul class="menu vertical nested">
-              <li><a href="/admin/users">Edit Users</a></li>
-            </ul>
-          </li></ul>
-        {{!-- Pages --}}
-          {{!-- In a CMS, the routes should be something like:
-                /admin/edit/:page
            --}}
-          <ul class="vertical menu accordion-menu" data-accordion-menu><li>
-              <a href="#" class="is-active">
-                <i class="large fa fa-files-o"></i>
-                <span class="app-dashboard-sidebar-text">
-                  Edit Pages
-                </span>
-              </a>
-              <ul class="menu vertical nested">
-                {{#if menu.templates}}
-                  {{#each menu.templates}}
-                  <li><a href="/admin/edit{{url}}">{{name}}</a></li>
-                  {{/each}}
-                {{else}}
-                  <p>No templates</p>
-                {{/if}}
-              </ul>
-          </li></ul>
-        {{!--  --}}
-          <li><a>
-            <i class="large fa fa-cog"></i><span class="app-dashboard-sidebar-text">Settings</span>
+
+        {{!-- Settings --}}
+          <li><a href="/admin/settings" class=" app-dashboard-sidebar-item">
+            <i class="large fa fa-cog "></i>
+            <span class="app-dashboard-sidebar-text">Settings</span>
           </a></li>
         {{!--  --}}
         </ul>

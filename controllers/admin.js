@@ -45,7 +45,8 @@ module.exports = function(app,menu,passport,LocalStrategy,flash,User) {
         }
       // res.redirect('/login');
     });
-  // Login
+
+  /// Login
     app.get('/login', function(req, res){
       res.render('login');
     });
@@ -58,25 +59,6 @@ module.exports = function(app,menu,passport,LocalStrategy,flash,User) {
       function(req, res){
       res.redirect('/admin');
     });
-  // Get Admin only when Authenticated
-    app.get('/admin',ensureAuthenticated, function(req, res){
-      res.render('admin/admin',{layout:'dashboard'});
-    });
-
-    // view the RSVP'S you get
-    app.get('/admin/messages',ensureAuthenticated, function(req, res){
-      var query = Rsvp.find({}).limit(10);
-      query.exec(function (err, message) {
-          if (err) {throw Error; }
-          res.render('admin/messages', {
-            layout:'dashboard',
-            messages: message,
-            assets: '../../public/assets/'
-          });
-      });
-    });
-
-
 
   // Log out
     app.get('/logout', function(req, res){
@@ -86,6 +68,153 @@ module.exports = function(app,menu,passport,LocalStrategy,flash,User) {
         res.redirect('/');
     });
 
+  // Get Admin only when Authenticated
+    app.get('/admin',ensureAuthenticated, function(req, res){
+      // res.render('admin/admin',{layout:'dashboard'});
+      var query = Rsvp.find({}).limit(10);
+      query.exec(function (err, message) {
+          if (err) {throw Error; }
+          res.render('admin/admin', {
+            layout: 'dashboard',
+            messages: message,
+            // assets: '../public/assets/'
+          });
+      });
+    });
+
+    // view the RSVP'S you get
+    app.get('/admin/messages',ensureAuthenticated, function(req, res){
+      var query = Rsvp.find({}).limit(10);
+      query.exec(function (err, message) {
+          if (err) {throw Error; }
+          res.render('admin/messages', {
+            layout: 'dashboard',
+            messages: message,
+            assets: '../../public/assets/'
+          });
+      });
+    });
+
+  /// Edit the couple
+    app.get('/admin/couple',ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/couple', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
+
+
+  /// Edit the Timeline
+    const Timeline = require('../models/mongoose/timeline');
+    app.get('/admin/timeline',ensureAuthenticated, function(req, res){
+      var query = Timeline.find({}).limit(10);
+      query.exec(function (err, timeline) {
+          if (err) {throw Error; }
+          res.render('admin/timeline', {
+            layout:'dashboard',
+            timeline: timeline,
+            assets: '../../public/assets/'
+          });
+      });
+    });
+    app.post("/admin/timeline", ensureAuthenticated, function(req, res) {
+        let TIMELINE = new Timeline();
+            TIMELINE.title = req.body.title;
+            TIMELINE.date = req.body.date;
+            TIMELINE.image = req.body.image;
+            TIMELINE.logo = req.body.logo;
+            TIMELINE.description = req.body.description;
+            TIMELINE.left = req.body.left;
+
+        TIMELINE.save(function(err){
+          if (err) {console.log(err); return;} 
+          else{res.redirect('/');};
+        });
+    });
+
+/// Edit Family
+    app.get('/admin/family',ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/couple', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
+
+/// Edit Gallery
+    app.get('/admin/gallery',ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/couple', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
+
+/// Edit Events
+    const Events = require('../models/mongoose/events');
+    app.post("/admin/events",function(req, res) {
+        let EVENTS = new Events();
+            EVENTS.title = req.body.title;
+            EVENTS.time = req.body.time;
+            EVENTS.date = req.body.date;
+            EVENTS.image = req.body.image;
+            EVENTS.location = req.body.location;
+            EVENTS.address = req.body.address;
+
+        EVENTS.save(function(err){
+          if (err) {console.log(err); return;} 
+          else{res.redirect('/');};
+        });
+    });
+    app.get('/admin/events',ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/events', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
+
+  /// Edit bridesmaid
+    app.get('/admin/bridesmaid',ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/couple', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
+  /// Edit groomsmen
+    app.get('/admin/groomsmen',ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/couple', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
   passport.use(new LocalStrategy(
     function(username, password, done) {
      User.getUserByUsername(username, function(err, user){
