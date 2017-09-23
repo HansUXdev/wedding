@@ -17,6 +17,30 @@
    <!-- container -->
    <div class="container">
       <div class="row">
+         {{#each couple}}
+         <div class="col-md-6">
+            <div class="br_grm">
+               <div class="brd_grm_wrap">
+                  <div class="brd_grm_img">
+                     <img src="{{image}}" class="img-circle" alt="Groom" />
+                     {{!-- 
+                     <div class="brgm_overlay">
+                        <a class="br_gr_zoom" href="#myModal2" data-toggle="modal">
+                        <img src="/public/assets/img/zoom.png" alt="" />
+                        </a>
+                     </div>
+                      --}}
+                     <!-- brgm_overlay -->
+                  </div>
+                  <!-- brd_grm_img -->
+               </div>
+               <!-- brd_grm_wrap -->
+               <h3>{{name}}</h3>
+               <p>{{description}}</p>
+            </div>
+            <!-- br_grm -->
+         </div>
+         {{else}}
          <div class="col-md-6">
             <div class="br_grm">
                <div class="brd_grm_wrap">
@@ -37,7 +61,6 @@
             </div>
             <!-- br_grm -->
          </div>
-         <!-- col-md-6 -->
          <div class="col-md-6">
             <div class="br_grm">
                <div class="brd_grm_wrap">
@@ -58,6 +81,8 @@
             </div>
             <!-- br_grm -->
          </div>
+         {{/each}}
+         <!-- col-md-6 -->
          <!-- col-md-6 -->
       </div>
       <!-- row -->
