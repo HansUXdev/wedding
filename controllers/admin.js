@@ -1,7 +1,14 @@
 
 
-module.exports = function(app,menu,passport,LocalStrategy,flash,User) {
-  var Rsvp = require('../models/mongoose/rsvp');
+module.exports = function(app, menu) {
+  var passport        = require('passport');
+  var LocalStrategy   = require('passport-local').Strategy;
+  var flash           = require('connect-flash');
+  var mongoose        = require('mongoose');
+  /// User Model
+  var User            =  mongoose.model('User');
+  var Rsvp            =  require('../models/mongoose/rsvp');
+  
   // Registration for a login
     app.get('/register', function(req, res){
         res.render('register');

@@ -95,7 +95,8 @@ app.set("view engine", "handlebars");
 // Import your routes
 	// require("./routes/sessions.js")(app, menu);
 	require("./controllers/home.js")(app, menu);
-	require("./controllers/admin.js")(app, menu,passport,LocalStrategy,flash,User);
+	require("./controllers/admin.js")(app, menu);
+	// require("./controllers/blog_Controller.js")(app, menu);
 
 if (prod) {
 	exec('gulp build', function (err, stdout, stderr) {
