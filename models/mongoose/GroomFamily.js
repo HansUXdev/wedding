@@ -5,6 +5,9 @@ var GroomFamilySchema = mongoose.Schema({
 	name: {
 		type: String
 	},
+	relationship: {
+		type: String
+	},
 	image: {
 		type: String
 	},
@@ -17,7 +20,7 @@ var GroomFamilySchema = mongoose.Schema({
 	// },
 });
 
-var Couple = module.exports = mongoose.model('Couple', CoupleSchema);
+var GroomFamily = module.exports = mongoose.model('GroomFamily', GroomFamilySchema);
 
 
 
