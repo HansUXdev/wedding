@@ -222,6 +222,40 @@ module.exports = function(app, menu) {
           });
       // });
     });
+
+/// Edit slideshow
+    const Slideshow = require('../models/mongoose/slideshow');
+    app.post("/admin/slideshow", ensureAuthenticated, function(req, res) {
+        let SLIDES = new Slideshow();
+            SLIDES.image = req.body.image;
+            SLIDES.title = req.body.title;
+            SLIDES.description = req.body.description;
+
+        SLIDES.save(function(err){
+          if (err) {console.log(err); return;} 
+          else{
+            console.log('Slide Saved...', SLIDES)
+            // res.redirect('/');
+          };
+        });
+        console.log(SLIDES);
+    });
+    app.get('/admin/slideshow', ensureAuthenticated, function(req, res){
+      // var query = User.find({}).limit(10);
+      // query.exec(function (err, user) {
+      //     if (err) {throw Error; }
+          res.render('admin/headerSlideshow', {
+            layout:'dashboard',
+            // users: user,
+            assets: '../../public/assets/'
+          });
+      // });
+    });
+
+
+////////////////
+// Passport
+////////////////
   passport.use(new LocalStrategy(
     function(username, password, done) {
      User.getUserByUsername(username, function(err, user){

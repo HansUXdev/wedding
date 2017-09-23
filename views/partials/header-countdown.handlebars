@@ -3,6 +3,17 @@
       <div class="row">
          <section id="main-slider" class="main-slider">
             <div class="ss-slides slides">
+               {{#each slideshow}}
+               <div class="ss-slide">
+                  <img src="{{image}}" alt="Couple" />
+                  <div class="slide_text_wrap">
+                     <div class="slider-text">
+                        <h2 class="slider-head">{{title}}</h2>
+                        <p class="">{{description}} </p>
+                     </div>
+                  </div>
+               </div>
+               {{else}}
                <div class="ss-slide">
                   <img src="/public/assets/img/slider2.png" alt="Couple"/>
                   <div class="slide_text_wrap">
@@ -30,6 +41,7 @@
                      </div>
                   </div>
                </div>
+               {{/each}}
                <!-- ss-slide -->
             </div>
             <!-- ss-slides slides -->
