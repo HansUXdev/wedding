@@ -1,19 +1,20 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
 
 // User Schema
 var CoupleSchema = mongoose.Schema({
-	fullname: {
-		type: String,
-		index:true
+	name: {
+		type: String
 	},
-	photo: {
+	image: {
+		type: String
+	},
+	description: {
 		type: String
 	},
 	/// bride, groom, partner
-	type: {
-		type: String
-	},
+	// type: {
+	// 	type: String
+	// },
 });
 
 var Couple = module.exports = mongoose.model('Couple', CoupleSchema);

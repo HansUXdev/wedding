@@ -103,7 +103,8 @@ module.exports = function(app, menu) {
     });
 
   /// Edit the couple
-    app.get('/admin/couple',ensureAuthenticated, function(req, res){
+    const Couple = require('../models/mongoose/couple');
+    app.get('/admin/couple', ensureAuthenticated, function(req, res){
       // var query = User.find({}).limit(10);
       // query.exec(function (err, user) {
       //     if (err) {throw Error; }
@@ -114,7 +115,19 @@ module.exports = function(app, menu) {
           });
       // });
     });
+    app.post("/admin/couple", ensureAuthenticated, function(req, res) {
+        let COUPLE = new Couple();
+            COUPLE.name = req.body.name;
+            COUPLE.image = req.body.image;
+            COUPLE.description = req.body.description;
+            // COUPLE.type = req.body.type;
 
+        COUPLE.save(function(err){
+          if (err) {console.log(err); return;} 
+          console.log('Slide Saved...', COUPLE)
+          // else{res.redirect('/');};
+        });
+    });
 
   /// Edit the Timeline
     const Timeline = require('../models/mongoose/timeline');

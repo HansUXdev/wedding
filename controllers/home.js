@@ -9,19 +9,23 @@ module.exports = function(app, menu) {
   app.get('/', function(req, res) {
     // Chain multiple models
     // https://stackoverflow.com/questions/26402781/nodejs-mongoose-render-two-models-from-collections
+      var Couple = mongoose.model('Couple');
       var Slideshow = mongoose.model('Slideshow');
       var Timeline = mongoose.model('Timeline');
       var Events = mongoose.model('Events');
-      Slideshow.find(function (err, slides) {
-        Timeline.find(function (err, timeline) {
-            Events.find(function (err, events) {
-                res.render('demo', {
-                    layout: 'bootstrap',
-                    slideshow : slides,
-                    timeline : timeline,
-                    events : events
-                });
-            });
+      Couple.find(function (err, couple) {
+        Slideshow.find(function (err, slides) {
+          Timeline.find(function (err, timeline) {
+              Events.find(function (err, events) {
+                  res.render('demo', {
+                      layout: 'bootstrap',
+                      slideshow : slides,
+                      couple : couple,
+                      timeline : timeline,
+                      events : events
+                  });
+              });
+          });
         });
       });
   });
