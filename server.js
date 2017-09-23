@@ -17,12 +17,14 @@ var favicon 					= require('serve-favicon');
 // Set this = true when you want to deploy
 var prod = false;
 
+const localDB = 'mongodb://localhost/wedding';
+const remoteDB = 'mongodb://heroku_cqrl2qbj:ctrfej5ogsnipkpjealrnh61da@ds015700.mlab.com:15700/heroku_cqrl2qbj';
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var User = require('./models/mongoose/users');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGODB_URI||'mongodb://localhost/wedding', {
+mongoose.connect(remoteDB||localDB, {
   useMongoClient: true,
   /* other options */
 }); 
