@@ -22,7 +22,7 @@ var mongoose = require('mongoose');
 var User = require('./models/mongoose/users');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/wedding', {
+mongoose.connect(MONGODB_URI||'mongodb://localhost/wedding', {
   useMongoClient: true,
   /* other options */
 }); 
