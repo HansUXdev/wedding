@@ -66,6 +66,39 @@
       <div class="app-dashboard-sidebar-inner">
 
         <ul class="menu vertical">
+          <li><a href="/admin" class=" app-dashboard-sidebar-item">
+             <i class="large fa fa-home"></i>
+             <span class="app-dashboard-sidebar-text">Home</span>
+          </a></li>
+        {{!-- Family --}}
+          <ul class="vertical menu accordion-menu app-dashboard-sidebar-item" data-accordion-menu><li>
+            <a href="#" class="is-active">
+              <i class="large fa fa-group"></i>
+              <span class="app-dashboard-sidebar-text">Family</span>
+            </a>
+            <ul class="menu vertical nested app-dashboard-sidebar-text">
+            {{!-- Bride and Groom --}}
+              <li><a href="/admin/couple" class=" app-dashboard-sidebar-item">
+                 <i class="large fa fa-female"></i>
+                 <i class="large fa fa-male"></i>
+                 <span class="app-dashboard-sidebar-text">Couple</span>
+              </a></li>
+              <li class="app-dashboard-sidebar-text"><a href="/admin/family/groom">Groom's Family</a></li>
+              <li class="app-dashboard-sidebar-text"><a href="/admin/family/bride">Bride's Family</a></li>
+
+            {{!-- Bridesmaid --}}
+              <li><a href="/admin/bridesmaid" class=" app-dashboard-sidebar-item">
+                 <i class="large fa fa-female"></i>
+                 <span class="app-dashboard-sidebar-text">Bridesmaid</span>
+              </a></li>
+            {{!-- Groomsmen --}}
+              <li><a href="/admin/groomsmen" class=" app-dashboard-sidebar-item">
+                 <i class="large fa fa-male"></i>
+                 <span class="app-dashboard-sidebar-text">Groomsmen</span>
+              </a></li>
+
+            </ul>
+          </li></ul>
         {{!-- Gallery --}}
           <li><a href="/admin/slideshow" class=" app-dashboard-sidebar-item">
              <i class="large fa fa-photo"></i>
@@ -76,22 +109,17 @@
              <i class="large fa fa-envelope-open"></i>
              <span class="app-dashboard-sidebar-text">RSVP's</span>
           </a></li>
-        {{!-- Bride and Groom --}}
-          <li><a href="/admin/couple" class=" app-dashboard-sidebar-item">
-             <i class="large fa fa-female"></i>
-             <i class="large fa fa-male"></i>
-             <span class="app-dashboard-sidebar-text">Bride and Groom</span>
-          </a></li>
+
         {{!-- Story --}}
           <li><a href="/admin/timeline" class=" app-dashboard-sidebar-item">
              <i class="large fa fa-heart"></i>
              <span class="app-dashboard-sidebar-text">Our Story</span>
           </a></li>
-        {{!-- Family --}}
-          <li><a href="/admin/family" class=" app-dashboard-sidebar-item">
+
+          {{!-- <li><a href="/admin/family/groom" class=" app-dashboard-sidebar-item">
              <i class="large fa fa-group"></i>
              <span class="app-dashboard-sidebar-text">Family</span>
-          </a></li>
+          </a></li> --}}
         {{!-- Gallery --}}
           <li><a href="/admin/gallery" class=" app-dashboard-sidebar-item">
              <i class="large fa fa-photo"></i>
@@ -101,16 +129,6 @@
           <li><a href="/admin/events" class=" app-dashboard-sidebar-item">
              <i class="large fa fa-group"></i>
              <span class="app-dashboard-sidebar-text">Events</span>
-          </a></li>
-        {{!-- Bridesmaid --}}
-          <li><a href="/admin/bridesmaid" class=" app-dashboard-sidebar-item">
-             <i class="large fa fa-female"></i>
-             <span class="app-dashboard-sidebar-text">Bridesmaid</span>
-          </a></li>
-        {{!-- Groomsmen --}}
-          <li><a href="/admin/groomsmen" class=" app-dashboard-sidebar-item">
-             <i class="large fa fa-male"></i>
-             <span class="app-dashboard-sidebar-text">Groomsmen</span>
           </a></li>
 
 

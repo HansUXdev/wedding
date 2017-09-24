@@ -27,6 +27,21 @@
                <!-- Tab panes -->
                <div class="tab-content">
                   <div role="tabpanel" class="tab-pane fade in active" id="family1">
+                     {{#each brideFam}}
+                     <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="family_mem_wrap">
+                           <div class="family_mem_img">
+                              <img src="{{image}}" class="img-circle" alt="{{relationship}}" />
+                              <!-- .brgm_overlay -->
+                           </div>
+                           <!-- .family_mem_img -->
+                           <h3>{{name}}</h3>
+                           <p class="relation">{{relationship}}</p>
+                           <p class="family_txt_details">{{description}}</p>
+                        </div>
+                        <!-- .family_mem_wrap -->
+                     </div>
+                     {{else}}
                      <div class="col-lg-3 col-md-3 col-sm-6">
                         <div class="family_mem_wrap">
                            <div class="family_mem_img">
@@ -110,9 +125,25 @@
                         </div>
                         <!-- .family_mem_wrap -->
                      </div>
-                     <!-- .col-lg-3 .col-md-3 .col-sm-6 -->   
+                     <!-- .col-lg-3 .col-md-3 .col-sm-6 --> 
+                     {{/each}}  
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="family2">
+                     {{#each groomFam}}
+                     <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="family_mem_wrap">
+                           <div class="family_mem_img">
+                              <img src="{{image}}" class="img-circle" alt="{{relationship}}" />
+                              <!-- .brgm_overlay -->
+                           </div>
+                           <!-- .family_mem_img -->
+                           <h3>{{name}}</h3>
+                           <p class="relation">{{relationship}}</p>
+                           <p class="family_txt_details">{{description}}</p>
+                        </div>
+                        <!-- .family_mem_wrap -->
+                     </div>
+                     {{else}}
                      <div class="col-lg-3 col-md-3  col-sm-6">
                         <div class="family_mem_wrap">
                            <div class="family_mem_img">
@@ -196,6 +227,7 @@
                         </div>
                         <!-- .family_mem_wrap -->
                      </div>
+                     {{/each}}
                      <!-- .col-lg-3 .col-md-3 .col-sm-6 --> 
                   </div>
                   <!-- #family2 .tab-pane -->

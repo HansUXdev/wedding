@@ -24,7 +24,7 @@ var mongoose = require('mongoose');
 var User = require('./models/mongoose/users');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(remoteDB||localDB, {
+mongoose.connect(localDB, {
   useMongoClient: true,
   /* other options */
 }); 
@@ -98,6 +98,7 @@ app.set("view engine", "handlebars");
 	// require("./routes/sessions.js")(app, menu);
 	require("./controllers/home.js")(app, menu);
 	require("./controllers/admin.js")(app, menu);
+	require("./controllers/familyController.js")(app, menu);
 	// require("./controllers/blog_Controller.js")(app, menu);
 
 if (prod) {
