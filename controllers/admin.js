@@ -72,7 +72,7 @@ module.exports = function(app, ensureAuthenticated) {
       // var query = User.find({}).limit(10);
       // query.exec(function (err, user) {
       //     if (err) {throw Error; }
-          res.render('admin/couple', {
+          res.render('admin/gallery', {
             layout:'dashboard',
             // users: user,
             assets: '../../public/assets/'
