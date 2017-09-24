@@ -1,6 +1,6 @@
 
 
-module.exports = function(app, menu) {
+module.exports = function(app, ensureAuthenticated) {
   var passport        = require('passport');
   var LocalStrategy   = require('passport-local').Strategy;
   var flash           = require('connect-flash');
@@ -9,71 +9,6 @@ module.exports = function(app, menu) {
   var User            =  mongoose.model('User');
   var Rsvp            =  require('../models/mongoose/rsvp');
   
-  // Registration for a login
-    app.get('/register', function(req, res){
-        res.render('register');
-    });
-    app.post('/register', function(req, res){
-        var name = req.body.name;
-        var email = req.body.email;
-        var username = req.body.username;
-        var password = req.body.password;
-        var password2 = req.body.password2;
-        
-        // Validation
-        req.checkBody('username', 'Name is required').notEmpty();
-        req.checkBody('email', 'Email is required').notEmpty();
-        req.checkBody('email', 'Email is not valid').isEmail();
-        req.checkBody('username', 'Username is required').notEmpty();
-        req.checkBody('password', 'Password is required').notEmpty();
-        req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
-        var errors = req.validationErrors();
-        if(errors){
-            res.render('register',{
-                errors: errors
-            });
-        } else{
-            var newUser = new User ({
-                name: name,
-                email: email,
-                username: username,
-                password: password
-            });
-            // use the createUser function defined in the user models
-            User.createUser(newUser, function(err, user){
-                if(err) throw err;
-                console.log(user);
-            });
-
-            req.flash('success_msg', 'You are registered and can now register');
-
-            res.redirect('/register');
-        }
-      // res.redirect('/login');
-    });
-
-  /// Login
-    app.get('/login', function(req, res){
-      res.render('login');
-    });
-    app.post('/login', 
-      passport.authenticate('local', {
-          successRedirect:'/admin', 
-          failureRedirect:'/login',
-          failureFlash: true
-      }),
-      function(req, res){
-      res.redirect('/admin');
-    });
-
-  // Log out
-    app.get('/logout', function(req, res){
-        req.logout();
-        console.log("logging out ...")
-        req.flash('success_msg', 'You are logged out');
-        res.redirect('/');
-    });
 
   // Get Admin only when Authenticated
     app.get('/admin',ensureAuthenticated, function(req, res){
@@ -236,14 +171,6 @@ module.exports = function(app, menu) {
     });
   });
 
-  function ensureAuthenticated(req, res, next){
-    if(req.isAuthenticated()){
-      // req.flash('success_msg','You are logged in');
-      return next();
-    } else {
-      req.flash('error_msg','You are not logged in');
-      res.redirect('/login');
-    }
-  }
+
 
 };

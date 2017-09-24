@@ -1,186 +1,149 @@
-const express = require('express');
-const router = express.Router();
 
-// Article Model
-let Article = require('../models/article');
-// User Model
-let User = require('../models/user');
+module.exports = function(app,ensureAuthenticated) {
+  const mongoose        = require('mongoose');
+  const express         = require('express');
+  const router          = express.Router();
+  var passport          = require('passport');
+  var LocalStrategy     = require('passport-local').Strategy;
+  var flash             = require('connect-flash');
 
-// Add Route
-router.get('/add', ensureAuthenticated, function(req, res){
-  res.render('add_article', {
-    title:'Add Article'
-  });
-});
+  // Article Model
+  let Blog = require('../models/mongoose/blog');
+  // User Model
+  let User = require('../models/mongoose/users');
 
-// Add Submit POST Route
-router.post('/add', function(req, res){
-  req.checkBody('title','Title is required').notEmpty();
-  //req.checkBody('author','Author is required').notEmpty();
-  req.checkBody('body','Body is required').notEmpty();
+  /// models
+  // var User            = require('../models/mongoose/users');
+  // var Blog = require('../models/mongoose/blog');
 
-  // Get Errors
-  let errors = req.validationErrors();
-
-  if(errors){
-    res.render('add_article', {
-      title:'Add Article',
-      errors:errors
-    });
-  } else {
-    let article = new Article();
-    article.title = req.body.title;
-    article.author = req.user._id;
-    article.body = req.body.body;
-
-    article.save(function(err){
-      if(err){
-        console.log(err);
-        return;
-      } else {
-        req.flash('success','Article Added');
-        res.redirect('/');
-      }
-    });
-  }
-});
-
-// Load Edit Form
-router.get('/edit/:id', ensureAuthenticated, function(req, res){
-  Article.findById(req.params.id, function(err, article){
-    if(article.author != req.user._id){
-      req.flash('danger', 'Not Authorized');
-      res.redirect('/');
-    }
-    res.render('edit_article', {
-      title:'Edit Article',
-      article:article
+  /// view the blog
+  app.get('/admin/blog', ensureAuthenticated, function(req, res){
+    Blog.find(function (err, post) {
+        res.render('blog/edit', {
+          layout: 'dashboard',
+          blog: post,
+          assets: '../../public/assets/'
+        });
     });
   });
-});
+  // app.get('/admin/blog/edit', ensureAuthenticated, function(req, res){
+  //   Blog.find(function (err, post) {
+  //       res.render('blog/edit', {
+  //         layout: 'dashboard',
+  //         blog: post,
+  //         assets: '../../public/assets/'
+  //       });
+  //   });
+  // });
+  //// Post
+    app.post('/admin/blog', ensureAuthenticated, function(req, res) {
+      const errors = req.validationErrors();
+      //// Check for errors
+      if (errors) {
+        res.render('/blog/edit', {
+          // title:'Add Article',
+          errors:errors
+        });
+      } 
+      else{
+        let blog = new Blog();
+        blog.title = req.body.title;
+        blog.categories = req.body.categories;
+        // blog.author = req.body.author;
+        blog.author = req.user._id;
+        blog.body = req.body.body;
 
-// Update Submit POST Route
-router.post('/edit/:id', function(req, res){
-  let article = {};
-  article.title = req.body.title;
-  article.author = req.body.author;
-  article.body = req.body.body;
+        blog.save(function(err){
+          if(err){
+            console.log(err);
+            return;
+          } else {
+            req.flash('success','Post Added');
+            res.redirect('/admin/blog');
+          }
+        });
+      };
+    });
 
-  let query = {_id:req.params.id}
+  //// Update
+    // app.update('/admin/blog/edit', ensureAuthenticated, function(req, res) {
+    // });
+  //// Delete
+    // app.delete('/admin/blog/edit', ensureAuthenticated, function(req, res) {
+    // });
 
-  Article.update(query, article, function(err){
-    if(err){
-      console.log(err);
-      return;
-    } else {
-      req.flash('success', 'Article Updated');
-      res.redirect('/');
-    }
-  });
-});
 
-// Delete Article
-router.delete('/:id', function(req, res){
-  if(!req.user._id){
-    res.status(500).send();
-  }
 
-  let query = {_id:req.params.id}
 
-  Article.findById(req.params.id, function(err, article){
-    if(article.author != req.user._id){
-      res.status(500).send();
-    } else {
-      Article.remove(query, function(err){
-        if(err){
-          console.log(err);
+// // Load Edit Form
+    app.get('/admin/blog/:id', ensureAuthenticated, function(req, res){
+      Blog.findById(req.params.id, function(err, blog){
+        if(blog.author != req.user._id){
+          req.flash('danger', 'Not Authorized');
+          res.redirect('/');
         }
-        res.send('Success');
-      });
-    }
-  });
-});
-
-// Get Single Article
-router.get('/:id', function(req, res){
-  Article.findById(req.params.id, function(err, article){
-    User.findById(article.author, function(err, user){
-      res.render('article', {
-        article:article,
-        author: user.name
+        res.render('/blog/edit', {
+          // title:'Edit blog',
+          errors:err,
+          blog: blog
+        });
       });
     });
-  });
-});
 
-// Access Control
-function ensureAuthenticated(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  } else {
-    req.flash('danger', 'Please login');
-    res.redirect('/users/login');
-  }
-}
+// // Update Submit POST Route
 
-module.exports = router;
+    app.post('/admin/blog/:id', ensureAuthenticated, function(req, res){
+      let blog = {};
+      blog.title = req.body.title;
+      blog.author = req.body.author;
+      blog.body = req.body.body;
 
+      let query = {_id:req.params.id}
 
-// module.exports = function(app,menu) {
-//   var passport        = require('passport');
-//   var LocalStrategy   = require('passport-local').Strategy;
-//   var flash           = require('connect-flash');
+      Blog.put(query, blog, function(err){
+        if(err){
+          console.log(" Problem with updating post... \n",err);
+          return;
+        } else {
+          req.flash('success', 'Article Updated');
+          res.redirect('/admin/blog');
+        }
+      });
+    });
 
-//   /// models
-//   var User            = require('./models/mongoose/users');
-//   // var Blog = require('../models/mongoose/blog');
+// // Delete Article
+    app.delete('/admin/blog/:id', ensureAuthenticated, function(req, res){
+      // if(!req.user._id){
+      //   res.status(500).send();
+      // }
 
-//   /// view the blog
-//     app.get('/blog', function(req, res) {
-//       // Chain multiple models
-//       // https://stackoverflow.com/questions/26402781/nodejs-mongoose-render-two-models-from-collections
-//         // var Blog = mongoose.model('Blog');
+      let query = {_id:req.params.id}
 
-//         Blog.find(function (err, post) {
-//             // Events.find(function (err, events) {
-//                 res.render('demo', {
-//                     layout: 'bootstrap',
-//                     blog : posts,
-//                     // events : events
-//                 });
-//             // });
-//         });
-//     });
+      Blog.findById(req.params.id, function(err, blog){
+        if(blog.author != req.user._id){
+          res.status(500).send();
+        } else {
+          Blog.remove(query, function(err){
+            if(err){
+              console.log(err);
+            }
+            res.send('Success');
+          });
+        }
+      });
+    });
 
-//   //// Backend
-//     // app.post('/admin/blog', ensureAuthenticated, function(req, res) {
-//     // });
-//     // app.update('/admin/blog/edit', ensureAuthenticated, function(req, res) {
-//     // });
-//     // app.delete('/admin/blog/edit', ensureAuthenticated, function(req, res) {
-//     // });
-//     app.get('/admin/blog',ensureAuthenticated, function(req, res){
-//       var query = Rsvp.find({}).limit(10);
-//       query.exec(function (err, message) {
-//           if (err) {throw Error; }
-//           res.render('admin/messages', {
-//             layout: 'dashboard',
-//             messages: message,
-//             assets: '../../public/assets/'
-//           });
-//       });
-//     });
+// // Get Single Article
+    app.get('/admin/blog/:id', ensureAuthenticated, function(req, res){
+      Blog.findById(req.params.id, function(err, blog){
+        User.find(blog.author, function(err, user){
+          res.render('/blog/edit', {
+            blog:blog,
+            author: user.username
+          });
+        });
+      });
+    });
 
 
-
-//   function ensureAuthenticated(req, res, next){
-//     if(req.isAuthenticated()){
-//       // req.flash('success_msg','You are logged in');
-//       return next();
-//     } else {
-//       req.flash('error_msg','You are not logged in');
-//       res.redirect('/login');
-//     }
-//   }
-
-// };
+};

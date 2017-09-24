@@ -1,0 +1,66 @@
+<div class="grid-y medium-grid-frame">
+  <div class="cell shrink header medium-cell-block-container">
+    {{!-- <h1>Grid Frame Header</h1> --}}
+    <div class="grid-x grid-padding-x">
+      <div class="cell medium-4">
+        <h2>Create new Post!</h2>
+      </div>
+      <div class="cell medium-8 medium-cell-block">
+        <p style="width:80vw;">You have # of posts</p>
+      </div>
+    </div>
+  </div>
+  <div class="cell medium-auto medium-cell-block-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell medium-4 medium-cell-block-y">
+        <form method='post' action='/admin/blog'class="cell contact-us-form">
+          <input name="title" type="text" placeholder="title">
+          <input name="author" type="text" placeholder="author">
+
+          <div class="grid-x grid-margin-x small-up-2">
+            <input class="cell" name="categories" type="text" placeholder="Categories">
+            <div class="cell">
+              <label for="FileUpload" class="button contact-us-file-button">Attach Photo</label>
+              <input type="file" id="FileUpload" name="image" class="show-for-sr">
+            </div>
+          </div>
+          
+          <textarea name="body" id="" rows="6" placeholder="Type your blog post here"></textarea>
+          <div class="contact-us-form-actions">
+            <input type="submit" class="button expanded" value="Post it" />
+          </div>
+        </form>
+
+      </div>
+      <div class="cell medium-8 medium-cell-block-y">
+        {{#each blog}}
+        <div class="grid-x grid-padding-x small-up-1 medium-up-2 large-up-2">
+          <div class="cell card-user-profile">
+            <img class="card-user-profile-img" src="{{image}}" alt="picture of space" />
+            <div class="card-user-profile-content card-section">
+             {{!--  <div class="card-user-profile-avatar">
+                <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
+              </div> --}}
+              <p class="card-user-profile-name">{{title}}</p>
+              <p class="card-user-profile-status">{{author}}</p>
+              <p class="card-user-profile-info">{{body}}</p>
+            </div>
+
+            <div class="card-user-profile-actions">
+              <a href="#" class="card-user-profile-button button hollow">Edit</a>
+              {{!-- <a href="#" class="card-user-profile-button button hollow secondary">More Info</a> --}}
+            </div>
+          </div>
+        </div>
+        {{else}}
+        <h2>No Posts Yet</h2>
+   
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="cell shrink footer">
+    {{!-- <h3>Here's my footer</h3> --}}
+  </div>
+</div>
+

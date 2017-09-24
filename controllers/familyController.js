@@ -1,6 +1,6 @@
 
 
-module.exports = function(app, menu) {
+module.exports = function(app, ensureAuthenticated) {
   const passport        = require('passport');
   const LocalStrategy   = require('passport-local').Strategy;
   const flash           = require('connect-flash');

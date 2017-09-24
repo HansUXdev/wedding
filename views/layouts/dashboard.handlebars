@@ -15,6 +15,7 @@
       <link rel="stylesheet" href="./public/assets/css/admin.css">
     {{/if}}
    
+
   </head>
   <body>
 
@@ -77,7 +78,7 @@
               <span class="app-dashboard-sidebar-text">Family</span>
             </a>
             <ul class="menu vertical nested app-dashboard-sidebar-text">
-            {{!-- Bride and Groom --}}
+            {{!-- Couple --}}
               <li><a href="/admin/couple" class=" app-dashboard-sidebar-item">
                  <i class="large fa fa-female"></i>
                  <i class="large fa fa-male"></i>
@@ -131,22 +132,21 @@
              <span class="app-dashboard-sidebar-text">Events</span>
           </a></li>
 
-
         {{!-- Blog --}}
           {{!-- In a CMS, the routes should be something like:
-                /admin/edit/:post
+                /admin/blog/:post
+           --}}
           <ul class="vertical menu accordion-menu" data-accordion-menu><li>
-            <a href="#" class="is-active">
+            <a class="is-active">
               <i class="large fa fa-files-o"></i>
               <span class="app-dashboard-sidebar-text">Blog</span>
             </a>
             <ul class="menu vertical nested">
-              <li><a href="/admin/posts">Create Post</a></li>
-              <li><a href="/blog">Views Posts</a></li>
+              <li><a href="/admin/blog">Create Blog</a></li>
+              {{!-- <li><a href="/admin/blog/view">Views Posts</a></li> --}}
+              <li><a href="/admin/blog/edit">Edit Posts</a></li>
             </ul>
           </li></ul>
-           --}}
-
         {{!-- Settings --}}
           <li><a href="/admin/settings" class=" app-dashboard-sidebar-item">
             <i class="large fa fa-cog "></i>
@@ -159,6 +159,12 @@
 
     <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
       {{>errors}}
+   {{#if assets}}
+      <script src="{{assets}}js/app.js"></script>
+      {{else}}
+      <script src="./public/assets/js/app.js"></script>
+    {{/if}}
+    
       {{{body}}}
 
 
@@ -167,11 +173,6 @@
 </div>
 
 
-   {{#if assets}}
-      <script src="{{assets}}js/app.js"></script>
-      {{else}}
-      <script src="./public/assets/js/app.js"></script>
-    {{/if}}
-	
+
   </body>
 </html>

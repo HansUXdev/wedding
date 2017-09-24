@@ -73,8 +73,16 @@
                         <input name='name' type="text" class="form-control" id="name" required placeholder="Name">
                      </div>
                      <div class="form-group">
-                        <input name='email' type="email" class="form-control" id="email" required placeholder="Email">
+                        <input name='address' type="text" class="form-control" id="address" required placeholder="Address">
                      </div>
+{{!--  --}}
+                     <div class="form-group select_group select_guest">
+                        <input name='phone' type="text" class="form-control" id="phone" required placeholder="Phone">
+                     </div>
+                     <div class="form-group select_group select_attend">
+                         <input name='email' type="email" class="form-control" id="email" required placeholder="Email">
+                     </div>
+{{!--  --}}
                      <div class="form-group select_group select_guest">
                         <select name='numguest' class="form-control select_frm" id="numguest">
                            <option value='0'>No Of Guest</option>
@@ -92,6 +100,10 @@
                            <option value='Wedding-Party'>Wedding Party</option>
                            <option value='Dinner'>Dinner</option>
                         </select>
+                     </div>
+                  {{!--  --}}
+                     <div class="form-group">
+                        <textarea cols="30" rows="10" name='message' type="text" class="form-control" id="message" required placeholder="message" style="height:auto!important;"></textarea>
                      </div>
                      <div class="form-group select_group">
                         <select name="attending" class="form-control selectpicker select_frm" id="attending">
