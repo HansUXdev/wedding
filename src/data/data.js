@@ -6,6 +6,9 @@
 // ===============================================================================
 
 var data = {
+  straight: true;
+  gay: false;
+  lesbian: false;
   pages: {
     home: {
       meta: [

@@ -25,8 +25,9 @@ $app-dashboard-top-nav-height: 55px;
 
 .nested.submenu > li[role*="treeitem"],
 li[role*="treeitem"] {
-  background: #212328;
+  // background: #212328;
   color: white;
+  > a{color: white;}
 }
 
 .app-dashboard-sidebar-inner .menu.vertical > ul, 
@@ -164,6 +165,7 @@ li[role*="treeitem"] {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    background: #2f323a;
     .menu > li > a {
       align-items: center;
     }
