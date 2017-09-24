@@ -22,7 +22,7 @@ var TimelineSchema = mongoose.Schema({
   	type: String
   },
   // is it on the left side
-  left: {
+  position: {
     type: String
   }
 });

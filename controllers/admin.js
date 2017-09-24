@@ -149,7 +149,7 @@ module.exports = function(app, menu) {
             TIMELINE.image = req.body.image;
             TIMELINE.logo = req.body.logo;
             TIMELINE.description = req.body.description;
-            TIMELINE.left = req.body.left;
+            TIMELINE.position = req.body.position;
 
         TIMELINE.save(function(err){
           if (err) {console.log(err); return;} 
