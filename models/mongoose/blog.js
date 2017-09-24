@@ -6,13 +6,19 @@ let blogSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  categories:{
+    type: String
+  },
+  image:{
+    type: String
+  },
   author:{
     type: String,
-    required: true
+    // required: true
   },
   body:{
     type: String,
-    required: true
+    // required: true
   }
 });
 

@@ -5,11 +5,17 @@ var RsvpSchema = mongoose.Schema({
 	fullname: {
 		type: String
 	},
+	address: {
+		type: String
+	},
 	email: {
 		type: String
 	},
+	phone: {
+		type: String
+	},
 	numguest: {
-		type: Number
+		type: String
 	},
   allevents: {
   	type: String

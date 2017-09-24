@@ -81,6 +81,15 @@ app.use(favicon(path.join(__dirname, 'public/assets/img', 'favicon.ico')));
 	  next();
 	});
 
+  function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+      // req.flash('success_msg','You are logged in');
+      return next();
+    } else {
+      req.flash('error_msg','You are not logged in');
+      res.redirect('/login');
+    }
+  }
 
 // Set Handlebars.
 // Options for handlebars
@@ -96,10 +105,11 @@ app.set("view engine", "handlebars");
 	// app.locals.assets = "public/assets/";
 // Import your routes
 	// require("./routes/sessions.js")(app, menu);
-	require("./controllers/home.js")(app, menu);
-	require("./controllers/admin.js")(app, menu);
-	require("./controllers/familyController.js")(app, menu);
-	// require("./controllers/blog_Controller.js")(app, menu);
+	require("./controllers/authentication.js")(app, ensureAuthenticated);
+	require("./controllers/home.js")(app, ensureAuthenticated);
+	require("./controllers/admin.js")(app, ensureAuthenticated);
+	require("./controllers/familyController.js")(app, ensureAuthenticated);
+	require("./controllers/blog_Controller.js")(app, ensureAuthenticated);
 
 if (prod) {
 	exec('gulp build', function (err, stdout, stderr) {

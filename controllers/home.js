@@ -1,5 +1,5 @@
 
-module.exports = function(app, menu) {
+module.exports = function(app, ensureAuthenticated) {
   var mongoose = require('mongoose');
   let Rsvp = require('../models/mongoose/rsvp');
   // let Timeline = require('../models/mongoose/timeline');
