@@ -46,7 +46,30 @@ module.exports = function(app, ensureAuthenticated) {
           // else{res.redirect('/');};
         });
     });
-
+    app.get('/admin/couple/:id', ensureAuthenticated, function(req, res){
+      Couple.findById(req.params.id, function(err, couple){
+        res.render('/admin/couple', {
+          errors:err,
+          couple: couple
+        });
+      });
+    });
+    app.delete('/admin/couple/:id', ensureAuthenticated, function(req, res){
+      let query = {_id:req.params.id}
+      Couple.findById(req.params.id, function(err, couple){
+        // if(blog.author != req.user._id){
+        //   res.status(500).send();
+        // } else {
+          Couple.remove(query, function(err){
+            if(err){
+              console.log(err);
+            }
+            res.redirect('/admin/couple');
+            // res.send('Success');
+          });
+        // }
+      });
+    });
 /// Edit Groom
     app.get('/admin/family/groom', ensureAuthenticated, function(req, res){   
       GroomFamily.find(function (err, groomFam) {

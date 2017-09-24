@@ -100,7 +100,7 @@ module.exports = function(app,ensureAuthenticated) {
 
       let query = {_id:req.params.id}
 
-      Blog.put(query, blog, function(err){
+      Blog.update(query, blog, function(err){
         if(err){
           console.log(" Problem with updating post... \n",err);
           return;
