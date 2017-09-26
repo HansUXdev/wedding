@@ -8,10 +8,10 @@ var RsvpSchema = mongoose.Schema({
 	address: {
 		type: String
 	},
-	email: {
+	phone: {
 		type: String
 	},
-	phone: {
+	email: {
 		type: String
 	},
 	numguest: {
