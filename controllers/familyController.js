@@ -6,23 +6,14 @@ module.exports = function(app, ensureAuthenticated) {
   const flash           = require('connect-flash');
   const mongoose        = require('mongoose');
   /// User Model
+  const User            =  mongoose.model('User');
+  const Rsvp            =  require('../models/mongoose/rsvp');
   const Couple          =  require('../models/mongoose/couple');
   const GroomFamily     =  require('../models/mongoose/GroomFamily');
   const BrideFamily     =  require('../models/mongoose/BrideFamily');
-  const User            =  mongoose.model('User');
-  const Rsvp            =  require('../models/mongoose/rsvp');
+  // const groomsmen       =  require('../models/mongoose/groomsmen');
+  // const bridesmaid      =  require('../models/mongoose/bridesmaid');
   
-
-  function ensureAuthenticated(req, res, next){
-    if(req.isAuthenticated()){
-      // req.flash('success_msg','You are logged in');
-      return next();
-    } else {
-      req.flash('error_msg','You are not logged in');
-      res.redirect('/login');
-    }
-  }
-
 /// Edit the couple
     app.get('/admin/couple', ensureAuthenticated, function(req, res){
       Couple.find(function (err, couple) {
