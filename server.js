@@ -1,21 +1,21 @@
-var express 					= require("express");
-var app 							= express();
-var path 							= require('path');
-var cookieParser  		= require('cookie-parser');
-var bodyParser 				= require("body-parser");
-var methodOverride 		= require("method-override");
-var exphbs 						= require("express-handlebars");
-var expressValidator 	= require('express-validator');
-var flash 						= require('connect-flash');
-var session 					= require('express-session');
-var passport 					= require('passport');
-var LocalStrategy 		= require('passport-local').Strategy;
-var fs      					= require('fs');
-var exec    					= require('child_process').exec;
-var favicon 					= require('serve-favicon');
+const express 					= require("express");
+const app 							= express();
+const path 							= require('path');
+const cookieParser  		= require('cookie-parser');
+const bodyParser 				= require("body-parser");
+const methodOverride 		= require("method-override");
+const exphbs 						= require("express-handlebars");
+const expressValidator 	= require('express-validator');
+const flash 						= require('connect-flash');
+const session 					= require('express-session');
+const passport 					= require('passport');
+const LocalStrategy 		= require('passport-local').Strategy;
+const fs      					= require('fs');
+const exec    					= require('child_process').exec;
+const favicon 					= require('serve-favicon');
 
 // Set this = true when you want to deploy
-var prod = false;
+  prod = false;
 
 const localDB = 'mongodb://localhost/wedding';
 const remoteDB = 'mongodb://heroku_cqrl2qbj:ctrfej5ogsnipkpjealrnh61da@ds015700.mlab.com:15700/heroku_cqrl2qbj';
@@ -105,8 +105,8 @@ app.set("view engine", "handlebars");
 	// app.locals.assets = "public/assets/";
 // Import your routes
 	// require("./routes/sessions.js")(app, menu);
+	require("./controllers/homeController.js")(app);
 	require("./controllers/authentication.js")(app, ensureAuthenticated);
-	require("./controllers/home.js")(app, ensureAuthenticated);
 	require("./controllers/admin.js")(app, ensureAuthenticated);
 	require("./controllers/familyController.js")(app, ensureAuthenticated);
 	require("./controllers/blog_Controller.js")(app, ensureAuthenticated);
